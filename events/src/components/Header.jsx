@@ -5,17 +5,31 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
+import logo from '../assets/header.png'
 
 export default function Header() {
     return (
-        <Navbar bg="primary" data-bs-theme="dark">
+        <Navbar data-bs-theme="dark" sticky="top">
             <Container>
-                <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+                <Navbar.Brand href="#home">
+                    <img
+                        alt=""
+                        src={logo}
+                        width="30"
+                        height="30"
+                    />
+                    Navbar
+                </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="#link">Add Event</Nav.Link>
+                        <Nav.Link href="/">Home</Nav.Link>
+                        <Nav.Link href="/addevent">Add Event</Nav.Link>
+                        <Nav.Link href="/events">Events</Nav.Link>
+                    </Nav>
+                    <Nav>
+                        <Nav.Link href="/login">login</Nav.Link>
+                        <Nav.Link href="/signup">signup</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
