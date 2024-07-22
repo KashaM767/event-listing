@@ -7,7 +7,6 @@ import AddEvent from './components/AddEvent';
 import LoginForm from './components/LoginForm';
 import EventList from './components/EventList'
 
-
 function App() {
   return (
     <>

@@ -10,3 +10,13 @@
 .navbar image {
   padding-left: 0;
 }
+
+.form-button {
+  padding-top: 0.5rem;
+}
+
+.button-primary {
+  background-color: #57cc99;
+  border-color: #57cc99;
+  color: #44475a;
+}
