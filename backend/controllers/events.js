@@ -31,3 +31,14 @@ exports.deleteEvent = async function (req, res, next) {
         return next(err);
     }
 };
+
+exports.allEvents = async function (req, res, next) {
+    try {
+        let events = await db.Event.find().sort({ title: 1 })
+        return res.status(200).json(events);
+    } catch (err) {
+        return next(err);
+    }
+};
+
+
