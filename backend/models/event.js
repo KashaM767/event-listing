@@ -11,10 +11,17 @@ const eventSchema = new mongoose.Schema({
         required: true,
         maxLength: 600,
     },
-    price: String,
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
+    },
+    date: {
+        type: String,
+        required: true,
+    },
+    time: {
+        type: String,
+        required: true,
     }
 });
 

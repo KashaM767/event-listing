@@ -1,0 +1,65 @@
+module.exports = [
+    {
+        title: "London Designers",
+        description: "Netus aenean mattis feugiat ut luctus blandit, senectus lacus et sit torquent feugiat, quam convallis volutpat malesuada aliquet. Scelerisque euismod condimentum potenti senectus vitae conubia lobortis, pretium est donec vel cubilia hac, donec pharetra facilisis cras auctor sociosqu.",
+        user: "669a938eac4f6f4e89ad0887",
+        date: "07/09/2024",
+        time: "19:00",
+    },
+    {
+        title: "Coding Dojo",
+        description: "Netus aenean mattis feugiat ut luctus blandit, senectus lacus et sit torquent feugiat, quam convallis volutpat malesuada aliquet. Scelerisque euismod condimentum potenti senectus vitae conubia lobortis, pretium est donec vel cubilia hac, donec pharetra facilisis cras auctor sociosqu.",
+        user: "669a938eac4f6f4e89ad0887",
+        date: "09/09/2024",
+        time: "18:30",
+    },
+    {
+        title: "Creative Coding",
+        description: "Netus aenean mattis feugiat ut luctus blandit, senectus lacus et sit torquent feugiat, quam convallis volutpat malesuada aliquet. Scelerisque euismod condimentum potenti senectus vitae conubia lobortis, pretium est donec vel cubilia hac, donec pharetra facilisis cras auctor sociosqu.",
+        user: "669a938eac4f6f4e89ad0887",
+        date: "18/10/2024",
+        time: "18:30",
+    },
+    {
+        title: "Beyond Code",
+        description: "Netus aenean mattis feugiat ut luctus blandit, senectus lacus et sit torquent feugiat, quam convallis volutpat malesuada aliquet. Scelerisque euismod condimentum potenti senectus vitae conubia lobortis, pretium est donec vel cubilia hac, donec pharetra facilisis cras auctor sociosqu.",
+        user: "669a938eac4f6f4e89ad0887",
+        date: "23/10/2024",
+        time: "17:30",
+    },
+    {
+        title: "Beyond Code",
+        description: "Netus aenean mattis feugiat ut luctus blandit, senectus lacus et sit torquent feugiat, quam convallis volutpat malesuada aliquet. Scelerisque euismod condimentum potenti senectus vitae conubia lobortis, pretium est donec vel cubilia hac, donec pharetra facilisis cras auctor sociosqu.",
+        user: "669a938eac4f6f4e89ad0887",
+        date: "23/10/2024",
+        time: "17:30",
+    },
+    {
+        title: "London Arduino",
+        description: "Netus aenean mattis feugiat ut luctus blandit, senectus lacus et sit torquent feugiat, quam convallis volutpat malesuada aliquet. Scelerisque euismod condimentum potenti senectus vitae conubia lobortis, pretium est donec vel cubilia hac, donec pharetra facilisis cras auctor sociosqu.",
+        user: "669a938eac4f6f4e89ad0887",
+        date: "11/11/2024",
+        time: "17:30",
+    },
+    {
+        title: "London Arduino",
+        description: "Netus aenean mattis feugiat ut luctus blandit, senectus lacus et sit torquent feugiat, quam convallis volutpat malesuada aliquet. Scelerisque euismod condimentum potenti senectus vitae conubia lobortis, pretium est donec vel cubilia hac, donec pharetra facilisis cras auctor sociosqu.",
+        user: "669a938eac4f6f4e89ad0887",
+        date: "11/11/2024",
+        time: "17:30",
+    },
+    {
+        title: "Creative Meetup",
+        description: "Netus aenean mattis feugiat ut luctus blandit, senectus lacus et sit torquent feugiat, quam convallis volutpat malesuada aliquet. Scelerisque euismod condimentum potenti senectus vitae conubia lobortis, pretium est donec vel cubilia hac, donec pharetra facilisis cras auctor sociosqu.",
+        user: "669a938eac4f6f4e89ad0887",
+        date: "14/11/2024",
+        time: "19:30",
+    },
+    {
+        title: "Creative Thinkers",
+        description: "Netus aenean mattis feugiat ut luctus blandit, senectus lacus et sit torquent feugiat, quam convallis volutpat malesuada aliquet. Scelerisque euismod condimentum potenti senectus vitae conubia lobortis, pretium est donec vel cubilia hac, donec pharetra facilisis cras auctor sociosqu.",
+        user: "6698f4f10b4e87e7d79cb84a",
+        date: "09/09/2024",
+        time: "18:30",
+    }
+];

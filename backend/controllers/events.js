@@ -2,10 +2,13 @@ const db = require("../models");
 
 exports.createEvent = async function (req, res, next) {
     try {
+        const { title, description, date, time } = req.body;
         let event = await db.Event.create({
-            title: req.body.title,
-            description: req.body.description,
-            user: req.params.id
+            title,
+            description,
+            user: req.params.id,
+            date,
+            time,
         });
         let foundUser = await db.User.findById(req.params.id);
         foundUser.events.push(event.id);
