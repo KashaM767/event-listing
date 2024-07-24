@@ -20,3 +20,7 @@
   border-color: #57cc99;
   color: #44475a;
 }
+
+#event-description {
+  text-align: left;
+}

@@ -7,8 +7,6 @@ import { useState } from 'react';
 const SignupForm = () => {
     const [validated, setValidated] = useState(false);
     const [password, setPassword] = useState('');
-    const [confirmation, setConfirmation] = useState('');
-
 
     const handleSubmit = (event) => {
         const form = event.currentTarget;
