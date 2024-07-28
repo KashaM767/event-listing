@@ -5,53 +5,47 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { useState } from 'react';
 import { useNavigate, Link } from "react-router-dom"
-import { login } from '../../utils/api';
+import { login } from '../../utils/api'
 
 const LoginForm = (props) => {
     const navigate = useNavigate()
     const [validated, setValidated] = useState(false);
-    const [errorMessages, setErrorMessages] = useState({});
+    const [isLoading, setIsLoading] = useState(true);
+    const [isError, setIsError] = useState(false)
     const [isSubmitted, setIsSubmitted] = useState(false);
-    const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    let userData = {
+        email,
+        password
+    }
 
     const handleSubmit = (event) => {
         if (event.currentTarget.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
+        } else {
+            event.preventDefault();
+            setValidated(true);
+            login(userData)
         }
-
-        setValidated(true);
     };
+
+
 
     return (
         <div className='row justify-content-md-center text-center'>
-            <div className='col-md-5'>
-                <Form validated={validated} onSubmit={handleSubmit}>
-                    <Form.Group controlId="formBasicUserName">
-                        <Form.Label>Username</Form.Label>
-                        <InputGroup hasValidation>
-                            <Form.Control
-                                required
-                                type="text"
-                                placeholder="Enter username"
-                                name="username"
-                                onChange={(e) => setUsername(e.target.value)}
-                            />
-                            <Form.Control.Feedback type="invalid">
-                                Please enter a username.
-                            </Form.Control.Feedback>
-                        </InputGroup>
-                    </Form.Group>
-
+            <div className='col-md-4'>
+                <h1 className='mb-4'>Log in</h1>
+                <Form validated={validated} onSubmit={(e) => handleSubmit(e)}>
                     <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Email address</Form.Label>
+                        <Form.Label>Email</Form.Label>
                         <InputGroup hasValidation>
                             <Form.Control
                                 required
                                 type="email"
-                                placeholder="Enter email"
+                                placeholder="Email"
                                 name="email"
                                 onChange={(e) => setEmail(e.target.value)}
                             />

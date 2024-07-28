@@ -11,10 +11,17 @@ export const allEvents = () => {
         })
 }
 
-export const login = () => {
-    return eventsApi.post(`/auth/login`)
+export const login = (obj) => {
+    return eventsApi.post('/auth/login', obj)
         .then(({ data }) => {
             return data
         })
 }
 
+
+export const signup = (obj) => {
+    return eventsApi.post('/auth/signup', obj)
+        .then(({ data }) => {
+            return data
+        })
+}

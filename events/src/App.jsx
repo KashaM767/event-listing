@@ -5,7 +5,7 @@ import Home from './components/Home';
 import SignupForm from './components/SignupForm';
 import AddEvent from './components/AddEvent';
 import LoginForm from './components/LoginForm';
-import EventList from './components/EventList'
+import EventList from './components/EventList';
 
 function App() {
   return (
