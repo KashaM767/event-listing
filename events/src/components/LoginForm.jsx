@@ -38,7 +38,7 @@ const LoginForm = (props) => {
         <div className='row justify-content-md-center text-center'>
             <div className='col-md-4'>
                 <h1 className='mb-4'>Log in</h1>
-                <Form validated={validated} onSubmit={(e) => handleSubmit(e)}>
+                <Form noValidate validated={validated} onSubmit={(e) => handleSubmit(e)}>
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label>Email</Form.Label>
                         <InputGroup hasValidation>

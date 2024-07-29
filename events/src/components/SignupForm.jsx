@@ -15,6 +15,8 @@ const SignupForm = () => {
     const [email, setEmail] = useState('');
     const [isLoading, setIsLoading] = useState(true);
     const [isError, setIsError] = useState(false)
+    const [currentUser, setCurrentUser] = useState({})
+    const minlength = 6;
 
     let userData = {
         email,
@@ -29,7 +31,7 @@ const SignupForm = () => {
             event.stopPropagation();
         } else {
             setValidated(true);
-            let user = signup(userData)
+            signup(userData)
             setCurrentUser(user)
             navigate('/')
         }
@@ -38,6 +40,7 @@ const SignupForm = () => {
     return (
         <div className='row justify-content-md-center text-center'>
             <div className='col-md-5'>
+                <h1 className='mb-4'>Sign Up</h1>
                 <Form noValidate validated={validated} onSubmit={handleSubmit}>
                     <Form.Group controlId="formBasicUsernamel">
                         <Form.Label>Username</Form.Label>
@@ -59,7 +62,7 @@ const SignupForm = () => {
                             <Form.Control
                                 required
                                 type="email"
-                                placeholder="Enter email"
+                                placeholder="Email"
                                 onChange={(e) => setEmail(e.target.value)} />
                             <Form.Control.Feedback type="invalid">
                                 Please enter an email.

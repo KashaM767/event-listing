@@ -1,10 +1,18 @@
 import * as React from 'react';
+import circuit from '../assets/homeImage.jpg';
 
 
 const Home = (props) => {
-    console.log(props)
+
     return (
-        <h1>Home</h1>
+        <>
+            <div className="px-4 py-5 my-5 text-center">
+                <h1 className="display-5 fw-bold text-body-emphasis">Creative Computing</h1>
+                <div className="col-lg-6 mx-auto">
+                    <p className="lead mb-4">Learn to use computer code to create computational art, discover local events and connect with others</p>
+                </div>
+            </div>
+        </>
     )
 }
 
