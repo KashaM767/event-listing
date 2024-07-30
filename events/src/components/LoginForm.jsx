@@ -3,23 +3,19 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useNavigate, Link } from "react-router-dom"
 import { login } from '../../utils/api'
+import { LoginContext } from '../App';
+
+
 
 const LoginForm = (props) => {
     const navigate = useNavigate()
     const [validated, setValidated] = useState(false);
-    const [isLoading, setIsLoading] = useState(true);
-    const [isError, setIsError] = useState(false)
-    const [isSubmitted, setIsSubmitted] = useState(false);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
-    let userData = {
-        email,
-        password
-    }
+    const [loggedIn, setLoggedIn] = useContext(LoginContext);
 
     const handleSubmit = (event) => {
         if (event.currentTarget.checkValidity() === false) {
@@ -28,7 +24,13 @@ const LoginForm = (props) => {
         } else {
             event.preventDefault();
             setValidated(true);
+            let userData = {
+                email,
+                password
+            }
             login(userData)
+            setLoggedIn(true)
+            navigate('/')
         }
     };
 
@@ -47,6 +49,7 @@ const LoginForm = (props) => {
                                 type="email"
                                 placeholder="Email"
                                 name="email"
+                                value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                             />
                             <Form.Control.Feedback type="invalid">
@@ -63,6 +66,7 @@ const LoginForm = (props) => {
                                 type="password"
                                 placeholder="Password"
                                 name="password"
+                                value={password}
                                 onChange={(e) => setPassword(e.target.value)} />
                             <Form.Control.Feedback type="invalid">
                                 Please enter a password.

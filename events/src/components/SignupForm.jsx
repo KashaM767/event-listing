@@ -2,10 +2,10 @@ import * as React from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
-import { useState } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { signup } from '../../utils/api';
 import { useNavigate } from 'react-router-dom';
-import { useContext } from "react";
+import { LoginContext } from '../App';
 
 const SignupForm = () => {
     const navigate = useNavigate();
@@ -13,16 +13,7 @@ const SignupForm = () => {
     const [password, setPassword] = useState('');
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
-    const [isLoading, setIsLoading] = useState(true);
-    const [isError, setIsError] = useState(false)
-    const [currentUser, setCurrentUser] = useState({})
-    const minlength = 6;
-
-    let userData = {
-        email,
-        password,
-        username
-    }
+    const [loggedIn, setLoggedIn] = useContext(LoginContext);
 
     const handleSubmit = async event => {
         const form = event.currentTarget;
@@ -31,8 +22,13 @@ const SignupForm = () => {
             event.stopPropagation();
         } else {
             setValidated(true);
+            let userData = {
+                email,
+                password,
+                username
+            }
             signup(userData)
-            setCurrentUser(user)
+            setLoggedIn(true)
             navigate('/')
         }
     };
@@ -49,6 +45,7 @@ const SignupForm = () => {
                                 required
                                 type="text"
                                 placeholder="Username"
+                                value={username}
                                 onChange={(e) => setUsername(e.target.value)} />
                             <Form.Control.Feedback type="invalid">
                                 Please enter a username.
@@ -63,6 +60,7 @@ const SignupForm = () => {
                                 required
                                 type="email"
                                 placeholder="Email"
+                                value={email}
                                 onChange={(e) => setEmail(e.target.value)} />
                             <Form.Control.Feedback type="invalid">
                                 Please enter an email.
@@ -77,6 +75,7 @@ const SignupForm = () => {
                                 required
                                 type="password"
                                 placeholder="Password"
+                                value={password}
                                 onChange={(e) => setPassword(e.target.value)} />
                             <Form.Control.Feedback type="invalid">
                                 Please enter a password.

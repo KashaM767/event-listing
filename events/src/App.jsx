@@ -6,20 +6,29 @@ import SignupForm from './components/SignupForm';
 import AddEvent from './components/AddEvent';
 import LoginForm from './components/LoginForm';
 import EventList from './components/EventList';
+import Logout from './components/Logout';
+import { createContext, useState } from 'react';
+
+export const LoginContext = createContext();
 
 function App() {
+  const [loggedIn, setLoggedIn] = useState(false);
   return (
     <>
-      <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/events" element={<EventList />} />
-          <Route path="/addEvent" element={<AddEvent />} />
-          <Route path="/signup" element={<SignupForm />} />
-          <Route path="/login" element={<LoginForm />} />
-        </Routes>
-      </BrowserRouter>
+      <LoginContext.Provider value={[loggedIn, setLoggedIn]}>
+        <BrowserRouter>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/events" element={<EventList />} />
+            <Route path="/addEvent" element={<AddEvent />} />
+            <Route path="/signup" element={<SignupForm />} />
+            <Route path="/login" element={<LoginForm />} />
+            <Route path="/logout" element={<Logout />} />
+          </Routes>
+
+        </BrowserRouter>
+      </LoginContext.Provider>
     </>
   )
 }

@@ -6,8 +6,18 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
 import logo from '../assets/header.png'
+import { useContext, useEffect } from "react";
+import { LoginContext } from "../App";
 
 export default function Header() {
+    const [loggedIn, setLoggedIn] = useContext(LoginContext)
+    let formpath = "/login";
+    let wording = "login";
+    if (loggedIn) {
+        formpath = "/logout";
+        wording = "logout"
+    }
+
     return (
         <Navbar data-bs-theme="dark" sticky="top">
             <Container>
@@ -28,12 +38,14 @@ export default function Header() {
                         <Nav.Link href="/events">Events</Nav.Link>
                     </Nav>
                     <Nav>
-                        <Nav.Link href="/login">login</Nav.Link>
-                        <Nav.Link href="/signup">signup</Nav.Link>
+                        <Nav.Link href={formpath}>{wording}</Nav.Link>
+                        {loggedIn ? null :
+                            <Nav.Link href="/signup">signup</Nav.Link>
+                        }
                     </Nav>
                 </Navbar.Collapse>
             </Container>
-        </Navbar>
+        </Navbar >
     )
 };
 

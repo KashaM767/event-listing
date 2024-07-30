@@ -6,7 +6,7 @@ exports.login = async function (req, res, next) {
         let user = await db.User.findOne({
             email: req.body.email
         });
-        let { id, username, profileImageUrl } = user;
+        let { id, username } = user;
         let isMatch = await user.comparePassword(req.body.password);
         if (isMatch) {
             let token = jwt.sign(
@@ -19,7 +19,8 @@ exports.login = async function (req, res, next) {
             return res.status(200).json({
                 id,
                 username,
-                token
+                token,
+                auth
             });
         } else {
             return next({
@@ -28,7 +29,7 @@ exports.login = async function (req, res, next) {
             });
         }
     } catch (e) {
-        return next({ status: 400, message: "Invalid Email/Password." });
+        return next({ status: 400, message: "Could not login." });
     }
 };
 
@@ -39,7 +40,6 @@ exports.signup = async function (req, res, next) {
         let token = jwt.sign({
             id,
             username,
-            admin
         }, process.env.SECRET_KEY);
         return res.status(200).json({
             id,
