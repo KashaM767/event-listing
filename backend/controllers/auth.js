@@ -19,8 +19,7 @@ exports.login = async function (req, res, next) {
             return res.status(200).json({
                 id,
                 username,
-                token,
-                auth
+                token
             });
         } else {
             return next({
@@ -44,7 +43,6 @@ exports.signup = async function (req, res, next) {
         return res.status(200).json({
             id,
             username,
-            admin,
             token
         });
     } catch (err) {

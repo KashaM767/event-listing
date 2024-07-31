@@ -10,28 +10,32 @@ import { LoginContext } from '../App';
 
 
 
-const LoginForm = (props) => {
-    const navigate = useNavigate()
+const LoginForm = () => {
+    const navigate = useNavigate();
     const [validated, setValidated] = useState(false);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loggedIn, setLoggedIn] = useContext(LoginContext);
 
-    const handleSubmit = (event) => {
+    const handleSubmit = event => {
         if (event.currentTarget.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
-        } else {
-            event.preventDefault();
-            setValidated(true);
-            let userData = {
-                email,
-                password
-            }
-            login(userData)
+        }
+        event.preventDefault();
+        setValidated(true);
+        let userData = {
+            email,
+            password
+        }
+        login(userData).then((data) => {
             setLoggedIn(true)
             navigate('/')
-        }
+        })
+            .catch((err) => {
+                console.log(err.response.data)
+            })
+
     };
 
 
@@ -40,7 +44,7 @@ const LoginForm = (props) => {
         <div className='row justify-content-md-center text-center'>
             <div className='col-md-4'>
                 <h1 className='mb-4'>Log in</h1>
-                <Form noValidate validated={validated} onSubmit={(e) => handleSubmit(e)}>
+                <Form noValidate validated={validated} onSubmit={handleSubmit}>
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label>Email</Form.Label>
                         <InputGroup hasValidation>

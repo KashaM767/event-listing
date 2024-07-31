@@ -9,10 +9,15 @@ import EventList from './components/EventList';
 import Logout from './components/Logout';
 import { createContext, useState } from 'react';
 
+
 export const LoginContext = createContext();
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const user = JSON.parse(localStorage.getItem("user"));
+  let token = null;
+  if (user) token = user.token;
+  const [loggedIn, setLoggedIn] = useState(token ? true : false);
+
   return (
     <>
       <LoginContext.Provider value={[loggedIn, setLoggedIn]}>

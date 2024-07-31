@@ -14,24 +14,31 @@ const SignupForm = () => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [loggedIn, setLoggedIn] = useContext(LoginContext);
+    const [currentUser, setCurrentUser] = useState({});
 
-    const handleSubmit = async event => {
-        const form = event.currentTarget;
-        if (form.checkValidity() === false) {
+    const handleSubmit = event => {
+        if (event.currentTarget.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
-        } else {
-            setValidated(true);
-            let userData = {
-                email,
-                password,
-                username
-            }
-            signup(userData)
+        }
+        event.preventDefault();
+        setValidated(true);
+        let userData = {
+            email,
+            password,
+            username
+        }
+        signup(userData).then((data) => {
             setLoggedIn(true)
             navigate('/')
-        }
+        })
+            .catch((err) => {
+                console.log(err)
+            })
+
+
     };
+
 
     return (
         <div className='row justify-content-md-center text-center'>
