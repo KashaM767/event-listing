@@ -26,7 +26,7 @@ export const signup = async (obj) => {
 }
 
 export const addEvent = async (obj) => {
-    const { data } = await eventsApi.post('/users/:id/events', obj);
+    const { data } = await eventsApi.post('/events', obj);
     return data;
 }
 

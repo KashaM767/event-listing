@@ -13,7 +13,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/auth", authRoutes)
-app.use("/api/users/:id/events", loginRequired, ensureIsAuthorised, eventsRoutes)
+// app.use("/api/users/:id/events", loginRequired, ensureIsAuthorised, eventsRoutes)
 app.use("/api", eventsRoutes)
 
 app.all("*", (req, res) => {

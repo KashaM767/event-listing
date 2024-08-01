@@ -4,18 +4,44 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { useState } from 'react';
 import { addEvent } from '../../utils/api';
+import { useNavigate } from 'react-router-dom';
 
 const AddEvent = () => {
     const [eventName, setEventName] = useState('');
     const [eventDescription, setEventDescription] = useState('');
     const [eventDate, setEventDate] = useState('');
-    const [eventTiem, setEventTime] = useState('');
+    const [eventTime, setEventTime] = useState('');
+    const [validated, setValidated] = useState(false);
+    const navigate = useNavigate();
+
+    const handleSubmit = event => {
+        if (event.currentTarget.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        event.preventDefault();
+        setValidated(true);
+        let eventData = {
+            title: eventName,
+            description: eventDescription,
+            date: eventDate,
+            time: eventTime
+        }
+        addEvent(eventData).then((data) => {
+            navigate('/events')
+        })
+            .catch((err) => {
+                console.log(err.response.data)
+            })
+    }
+
+
 
     return (
         <div className='row justify-content-md-center text-center'>
             <div className='col-md-5'>
                 <h1 className='mb-4'>Add Event</h1>
-                <Form noValidate onSubmit={(e) => handleSubmit(e)}>
+                <Form noValidate validated={validated} onSubmit={handleSubmit}>
                     <Form.Group controlId="formBasicTitle">
                         <Form.Label>Event Name</Form.Label>
                         <InputGroup hasValidation>

@@ -34,7 +34,9 @@ export default function Header() {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
                         <Nav.Link href="/">Home</Nav.Link>
-                        <Nav.Link href="/addevent">Add Event</Nav.Link>
+                        {!loggedIn ? null :
+                            <Nav.Link href="/addevent">Add Event</Nav.Link>
+                        }
                         <Nav.Link href="/events">Events</Nav.Link>
                     </Nav>
                     <Nav>

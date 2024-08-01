@@ -6,9 +6,8 @@ router
     .route('/events')
     .get(allEvents);
 
-// prefix = api/users/:id/events
 router
-    .route('/')
+    .route('/events')
     .post(createEvent);
 
 router

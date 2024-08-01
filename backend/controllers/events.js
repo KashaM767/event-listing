@@ -6,17 +6,10 @@ exports.createEvent = async function (req, res, next) {
         let event = await db.Event.create({
             title,
             description,
-            user: req.params.id,
             date,
             time,
         });
-        let foundUser = await db.User.findById(req.params.id);
-        foundUser.events.push(event.id);
-        await foundUser.save();
-        let foundEvent = await db.Event.findById(event._id).populate("user", {
-            username: true
-        });
-        return res.status(200).json(foundEvent);
+        return res.status(200).json(event);
     } catch (err) {
         return next(err);
     }

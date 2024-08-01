@@ -19,10 +19,6 @@ const userSchema = new mongoose.Schema({
     admin: {
         type: Boolean,
     },
-    events: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Event"
-    }]
 });
 
 userSchema.pre("save", async function (next) {
