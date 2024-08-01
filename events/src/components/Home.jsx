@@ -1,6 +1,6 @@
 import * as React from 'react';
 import circuit from '../assets/homeImage.jpg';
-
+import Image from 'react-bootstrap/Image';
 
 const Home = (props) => {
 
@@ -10,8 +10,16 @@ const Home = (props) => {
                 <h1 className="display-5 fw-bold text-body-emphasis">Creative Computing</h1>
                 <div className="col-lg-6 mx-auto">
                     <p className="lead mb-4">Learn to use computer code to create computational art, discover local events and connect with others</p>
+                    <Image src={circuit} fluid />
                 </div>
+
+
+
             </div>
+
+
+
+
         </>
     )
 }

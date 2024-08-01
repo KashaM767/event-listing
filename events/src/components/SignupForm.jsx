@@ -15,8 +15,9 @@ const SignupForm = () => {
     const [email, setEmail] = useState('');
     const [loggedIn, setLoggedIn] = useContext(LoginContext);
     const [currentUser, setCurrentUser] = useState({});
+    const [error, setError] = useState(false)
 
-    const handleSubmit = event => {
+    const handleSubmit = async event => {
         if (event.currentTarget.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
@@ -28,22 +29,32 @@ const SignupForm = () => {
             password,
             username
         }
-        signup(userData).then((data) => {
-            setLoggedIn(true)
-            navigate('/')
-        })
-            .catch((err) => {
-                console.log(err)
-            })
+        try {
+            const data = await signup(userData);
+            setLoggedIn(true);
+            navigate('/');
+        } catch (err) {
+            setError(true);
+        }
 
 
     };
+
+
 
 
     return (
         <div className='row justify-content-md-center text-center'>
             <div className='col-md-5'>
                 <h1 className='mb-4'>Sign Up</h1>
+                {
+                    error ?
+                        (
+                            <div className="alert alert-danger mt-3 mb-0">Sorry, that username/amd or email is unavailable
+                            </div>
+                        ) : null
+                }
+
                 <Form noValidate validated={validated} onSubmit={handleSubmit}>
                     <Form.Group controlId="formBasicUsernamel">
                         <Form.Label>Username</Form.Label>

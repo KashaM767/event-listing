@@ -16,6 +16,7 @@ const LoginForm = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loggedIn, setLoggedIn] = useContext(LoginContext);
+    const [error, setError] = useState(false)
 
     const handleSubmit = event => {
         if (event.currentTarget.checkValidity() === false) {
@@ -28,22 +29,25 @@ const LoginForm = () => {
             email,
             password
         }
-        login(userData).then((data) => {
+        return login(userData).then((data) => {
             setLoggedIn(true)
             navigate('/')
         })
             .catch((err) => {
-                console.log(err.response.data)
+                setError(err);
             })
-
     };
-
-
 
     return (
         <div className='row justify-content-md-center text-center'>
             <div className='col-md-4'>
                 <h1 className='mb-4'>Log in</h1>
+                {error ?
+                    (
+                        <div className="alert alert-danger mt-3 mb-0">login not recognised
+                        </div>
+                    ) : null
+                }
                 <Form noValidate validated={validated} onSubmit={handleSubmit}>
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label>Email</Form.Label>
