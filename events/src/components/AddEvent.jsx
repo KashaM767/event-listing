@@ -5,6 +5,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import { useState } from 'react';
 import { addEvent } from '../../utils/api';
 import { useNavigate } from 'react-router-dom';
+import Row from 'react-bootstrap/Row';
 
 const AddEvent = () => {
     const [eventName, setEventName] = useState('');
@@ -73,35 +74,37 @@ const AddEvent = () => {
                         </InputGroup>
                     </Form.Group>
 
-                    <Form.Group className="col-md-5" controlId="formBasicDate">
-                        <Form.Label>Date</Form.Label>
-                        <InputGroup hasValidation>
-                            <Form.Control
-                                required
-                                type="date"
-                                name="eventDate"
-                                onChange={(e) => setEventDate(e.target.value)}
-                            />
-                            <Form.Control.Feedback type="invalid">
-                                Please enter a date
-                            </Form.Control.Feedback>
-                        </InputGroup>
-                    </Form.Group>
+                    <Row className='d-flex justify-content-between'>
+                        <Form.Group className="col-md-6" controlId="formBasicDate">
+                            <Form.Label>Date</Form.Label>
+                            <InputGroup hasValidation>
+                                <Form.Control
+                                    required
+                                    type="date"
+                                    name="eventDate"
+                                    onChange={(e) => setEventDate(e.target.value)}
+                                />
+                                <Form.Control.Feedback type="invalid">
+                                    Please enter a date
+                                </Form.Control.Feedback>
+                            </InputGroup>
+                        </Form.Group>
 
-                    <Form.Group className="col-md-5" controlId="formBasicTime">
-                        <Form.Label>Time</Form.Label>
-                        <InputGroup hasValidation>
-                            <Form.Control
-                                required
-                                type="time"
-                                name="eventTime"
-                                onChange={(e) => setEventTime(e.target.value)}
-                            />
-                            <Form.Control.Feedback type="invalid">
-                                Please enter a time
-                            </Form.Control.Feedback>
-                        </InputGroup>
-                    </Form.Group>
+                        <Form.Group className="col-md-6" controlId="formBasicTime">
+                            <Form.Label>Time</Form.Label>
+                            <InputGroup hasValidation>
+                                <Form.Control
+                                    required
+                                    type="time"
+                                    name="eventTime"
+                                    onChange={(e) => setEventTime(e.target.value)}
+                                />
+                                <Form.Control.Feedback type="invalid">
+                                    Please enter a time
+                                </Form.Control.Feedback>
+                            </InputGroup>
+                        </Form.Group>
+                    </Row>
 
                     <Form.Group controlId="formBasicButton">
                         <Button className='col-md-3 mt-2' variant="info" type="submit">
