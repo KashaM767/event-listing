@@ -8,7 +8,7 @@ export default function EventCard(props) {
     return (
         <Card border="info" style={{ width: '21rem', height: '25rem' }} className='row justify-content-md-center text-center m-2 px-2'>
             <Card.Body>
-                <Card.Title>{title}</Card.Title>
+                <Card.Title className='pt-1'>{title}</Card.Title>
                 <Card.Text id="event-description">
                     {description}
                 </Card.Text>

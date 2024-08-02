@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 const { db } = require("../models");
-const { Event } = require("../models/index")
-const events = require("./events")
+const { Event, User } = require("../models/index");
+const events = require("./events");
+const users = require('./users');
 
 const seedDB = async () => {
     await Event.deleteMany({})
@@ -17,4 +18,18 @@ const seedDB = async () => {
     }
 }
 
+const userSeedDB = async () => {
+    await User.deleteMany({})
+    for (let user of users) {
+        const newUser = new User({
+            email: user.email,
+            username: user.username,
+            password: user.password,
+            admin: user.admin,
+        })
+        await newUser.save()
+    }
+}
+
 seedDB()
+userSeedDB()

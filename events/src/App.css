@@ -1,6 +1,7 @@
 .navbar {
   margin-bottom: 1rem;
   background-color: #38a3a5;
+  color: white;
 }
 
 .navbar li:hover {
@@ -9,6 +10,10 @@
 
 .navbar image {
   padding-left: 0;
+}
+
+.main-header {
+  font-family: "Libre Baskerville", serif;
 }
 
 .form-button {

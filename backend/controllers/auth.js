@@ -6,7 +6,7 @@ exports.login = async function (req, res, next) {
         let user = await db.User.findOne({
             email: req.body.email
         });
-        let { id, username } = user;
+        let { id, username, admin } = user;
         let isMatch = await user.comparePassword(req.body.password);
         if (isMatch) {
             let token = jwt.sign(
@@ -19,7 +19,8 @@ exports.login = async function (req, res, next) {
             return res.status(200).json({
                 id,
                 username,
-                token
+                token,
+                admin
             });
         } else {
             return next({
@@ -43,7 +44,8 @@ exports.signup = async function (req, res, next) {
         return res.status(200).json({
             id,
             username,
-            token
+            token,
+            admin
         });
     } catch (err) {
         if (err.code === 11000) {
