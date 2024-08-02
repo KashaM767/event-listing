@@ -9,5 +9,9 @@
     "mongoose": "^8.5.1",
     "nodemon": "^3.1.4",
     "supertest": "^7.0.0"
+  },
+  "main": "listen.js",
+  "scripts": {
+    "start": "node listen.js"
   }
 }
