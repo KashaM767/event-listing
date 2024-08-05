@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 mongoose.set("debug", true);
 mongoose.Promise = Promise;
 require("dotenv").config();
-mongoose.connect(process.env.mongo_url);
+mongoose.connect(process.env.MONGO_URL);
 
 
 module.exports.User = require("./user");
