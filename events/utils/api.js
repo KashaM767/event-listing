@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const eventsApi = axios.create({
-    baseURL: "http://localhost:8081/api",
+    baseURL: "https://pixel-pushing-be.onrender.com/api",
 });
 
 export const allEvents = async () => {
